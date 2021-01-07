@@ -3,7 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
 
 function App() {
-  return <h4>cozy's corner</h4>
+  return (
+    <div>
+      <h4>cozy's corner</h4>
+    </div>
+  )
 }
 
 export default App
