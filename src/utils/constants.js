@@ -1,5 +1,8 @@
+// import react b/c use react component in services array
 import React from 'react'
 import { GiCompass, GiDiamondHard, GiStabbedNote } from 'react-icons/gi'
+
+// links array
 export const links = [
   {
     id: 1,
@@ -18,6 +21,7 @@ export const links = [
   },
 ]
 
+// services array
 export const services = [
   {
     id: 1,
