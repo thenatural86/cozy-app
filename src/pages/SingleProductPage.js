@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+// access the url params with useParams hook from react router
 import { useParams, useHistory } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { single_product_url as url } from '../utils/constants'
@@ -15,6 +16,38 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const SingleProductPage = () => {
+  // console.log(useParams())
+  // grab id from useParams()
+  const { id } = useParams()
+  const history = useHistory()
+  const {
+    single_product_loading: loading,
+    single_product_error: error,
+    single_product: product,
+    fetchSingleProduct,
+  } = useProductsContext()
+
+  // pass in url and id to access the product
+  useEffect(() => {
+    fetchSingleProduct(`${url}${id}`)
+  }, [id])
+
+  // redirect to home if there is an error via push method on useHistory hook from react router
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        history.push('/')
+      }, 2000)
+    }
+  }, [error])
+
+  // console.log(product)
+  if (loading) {
+    return <Loading />
+  }
+  if (error) {
+    return <Error />
+  }
   return <h4>single product page</h4>
 }
 
