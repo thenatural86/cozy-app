@@ -1,8 +1,32 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const ProductImages = () => {
-  return <h4>product images</h4>
+// default param of images to avoid undefined error. if images is undefine set to empty array with one object that has url property set to an empty string
+const ProductImages = ({ images = [{ url: '' }] }) => {
+  // console.log(images)
+  // change state of main image to be displayed
+  const [main, setMain] = useState(images[0])
+  // console.log(main)
+  return (
+    <Wrapper>
+      <img src={main.url} alt='main image' className='main' />
+      {/* image gallery */}
+      <div className='gallery'>
+        {images.map((image, index) => {
+          const { url, file_name } = image
+          return (
+            <img
+              src={url}
+              alt={file_name}
+              key={index}
+              onClick={() => setMain(images[index])}
+              className={`${url === main.url ? 'active' : null}`}
+            />
+          )
+        })}
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
