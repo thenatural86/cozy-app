@@ -10,13 +10,27 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
 } from '../actions'
+
+// grab products out of products context
 import { useProductsContext } from './products_context'
 
-const initialState = {}
+const initialState = {
+  filtered_products: [],
+  all_products: [],
+}
 
 const FilterContext = React.createContext()
 
 export const FilterProvider = ({ children }) => {
+  // grab products out of products context
+  const { products } = useProductsContext()
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  // useEffect to dispatch action to load product when component mounts
+
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products })
+  }, [products])
   return (
     <FilterContext.Provider value='filter context'>
       {children}
