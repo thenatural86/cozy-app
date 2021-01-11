@@ -6,10 +6,31 @@ import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 
 const AddToCart = (product) => {
-  console.log(product)
+  // console.log(product)
   const { id, stock, colors } = product
   const [mainColor, setMainColor] = useState(colors[0])
+  const [amount, setAmount] = useState(1)
   // console.log(mainColor)
+
+  const increase = () => {
+    setAmount((oldAmount) => {
+      let newAmount = oldAmount + 1
+      if (newAmount > stock) {
+        newAmount = stock
+      }
+      return newAmount
+    })
+  }
+
+  const decrease = () => {
+    setAmount((oldAmount) => {
+      let newAmount = oldAmount - 1
+      if (newAmount < 1) {
+        newAmount = 1
+      }
+      return newAmount
+    })
+  }
 
   return (
     <Wrapper>
@@ -32,7 +53,16 @@ const AddToCart = (product) => {
           })}
         </div>
       </div>
-      <div className='btn-container'></div>
+      <div className='btn-container'>
+        <AmountButtons
+          amount={amount}
+          increase={increase}
+          decrease={decrease}
+        />
+        <Link to='/cart' className='btn'>
+          add to cart
+        </Link>
+      </div>
     </Wrapper>
   )
 }
