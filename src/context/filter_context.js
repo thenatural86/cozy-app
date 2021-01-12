@@ -34,6 +34,12 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
   }, [products])
 
+  // useEffect runs when we change the sort state value and when products changes
+  useEffect(() => {
+    // dispatch action to sort products
+    dispatch({ type: SORT_PRODUCTS })
+  }, [products, state.sort])
+
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW })
   }
