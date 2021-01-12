@@ -21,6 +21,8 @@ const filter_reducer = (state, action) => {
       return { ...state, grid_view: true }
     case SET_LISTVIEW:
       return { ...state, grid_view: false }
+    case UPDATE_SORT:
+      return { ...state, sort: action.payload }
     default:
       throw new Error(`No Matching "${action.type}" - action type`)
   }
