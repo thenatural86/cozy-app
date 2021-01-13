@@ -19,6 +19,16 @@ const initialState = {
   all_products: [],
   grid_view: true,
   sort: 'price-lowest',
+  filters: {
+    text: '',
+    company: 'all',
+    category: 'all',
+    color: 'all',
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+    shipping: false,
+  },
 }
 
 const FilterContext = React.createContext()
@@ -29,7 +39,6 @@ export const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   // useEffect to dispatch action to load product when component mounts
-
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
   }, [products])
@@ -43,6 +52,7 @@ export const FilterProvider = ({ children }) => {
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW })
   }
+
   const setListView = () => {
     dispatch({ type: SET_LISTVIEW })
   }
