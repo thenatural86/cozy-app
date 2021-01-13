@@ -43,11 +43,12 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
   }, [products])
 
-  // useEffect runs when we change the sort state value and when products changes
+  // useEffect runs when we change the sort or filters state value and when products changes
   useEffect(() => {
     // dispatch action to sort products
+    dispatch({ type: FILTER_PRODUCTS })
     dispatch({ type: SORT_PRODUCTS })
-  }, [products, state.sort])
+  }, [products, state.sort, state.filters])
 
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW })
@@ -64,9 +65,25 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: value })
   }
 
+  // call every time filters state is changed
+  const updateFilters = (e) => {
+    let name = e.target.name
+    let value = e.target.value
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
+  }
+
+  const clearFilters = () => {}
+
   return (
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort }}
+      value={{
+        ...state,
+        setGridView,
+        setListView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>
