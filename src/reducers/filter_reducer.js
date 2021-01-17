@@ -92,7 +92,6 @@ const filter_reducer = (state, action) => {
           (product) => product.shipping === true
         )
       }
-
       return { ...state, filtered_products: temporaryProducts }
     case CLEAR_FILTERS:
       return {
