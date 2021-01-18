@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.svg'
-import logo2 from '../assets/logo2.png'
+// import logo2 from '../assets/logo2.png'
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { FaTimes } from 'react-icons/fa'

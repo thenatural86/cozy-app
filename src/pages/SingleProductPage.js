@@ -30,6 +30,7 @@ const SingleProductPage = () => {
   // pass in url and id to access the product
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`)
+    // eslint-disable-next-line
   }, [id])
 
   // redirect to home if there is an error via push method on useHistory hook from react router
@@ -39,6 +40,7 @@ const SingleProductPage = () => {
         history.push('/')
       }, 2000)
     }
+    // eslint-disable-next-line
   }, [error])
 
   // console.log(product)
