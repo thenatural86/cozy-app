@@ -12,7 +12,7 @@ const CartPage = () => {
         <div className='empty'>
           <h2>your cart is empty</h2>
           <Link to='/products' className='btn'>
-            live a 'lil
+            live a lil'
           </Link>
         </div>
       </Wrapper>
