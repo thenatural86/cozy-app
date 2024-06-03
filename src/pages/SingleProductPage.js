@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 // access the url params with useParams hook from react router
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { single_product_url as url } from '../utils/constants'
 import { formatPrice } from '../utils/helpers'
@@ -19,7 +19,7 @@ const SingleProductPage = () => {
   // console.log(useParams())
   // grab id from useParams()
   const { id } = useParams()
-  const history = useHistory()
+  const navigate = useNavigate()
   const {
     single_product_loading: loading,
     single_product_error: error,
@@ -37,8 +37,8 @@ const SingleProductPage = () => {
   useEffect(() => {
     if (error) {
       setTimeout(() => {
-        history.push('/')
-      }, 2000)
+        navigate('/')
+      }, 3000)
     }
     // eslint-disable-next-line
   }, [error])

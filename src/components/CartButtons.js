@@ -26,6 +26,7 @@ const CartButtons = () => {
           className='auth-btn'
           onClick={() => {
             clearCart()
+            // localStorage.removeItem('user')
             logout({ returnTo: window.location.origin })
           }}
         >
