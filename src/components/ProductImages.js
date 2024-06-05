@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-// default param of images to avoid undefined error. if images is undefine set to empty array with one object that has url property set to an empty string
 const ProductImages = ({ images = [{ url: '' }] }) => {
-  // console.log(images)
-  // change state of main image to be displayed
   const [main, setMain] = useState(images[0])
-  // console.log(main)
   return (
     <Wrapper>
       <img src={main.url} alt='main' className='main' />
-      {/* image gallery */}
       <div className='gallery'>
         {images.map((image, index) => {
           const { url, file_name } = image

@@ -16,8 +16,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const SingleProductPage = () => {
-  // console.log(useParams())
-  // grab id from useParams()
   const { id } = useParams()
   const navigate = useNavigate()
   const {
@@ -43,14 +41,12 @@ const SingleProductPage = () => {
     // eslint-disable-next-line
   }, [error])
 
-  // console.log(product)
   if (loading) {
     return <Loading />
   }
   if (error) {
     return <Error />
   }
-  // console.log(product)
   const {
     name,
     price,

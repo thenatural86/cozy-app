@@ -47,7 +47,6 @@ const cart_reducer = (state, action) => {
       return { ...state, cart: [] }
     case TOGGLE_CART_ITEM_AMOUNT:
       const { item_id, value } = action.payload
-      // console.log(item_id, value)
       const tempCart = state.cart.map((item) => {
         if (item.id === item_id) {
           if (value === 'inc') {
