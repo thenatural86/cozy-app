@@ -20,15 +20,13 @@ import { Auth0Provider } from '@auth0/auth0-react'
 // old
 // dev-xficzv3o.us.auth0.com
 // Cs1qh2TuN4O6Rsb0DabfkgLYT98x3Nmk
-// domain='dev-itfjckjv62h81dxu.us.auth0.com'
-// clientId='BJWflfLTJZ7eO93Jwkt8g8L67SJBbxvF'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <Auth0Provider
-    domain={process.env.REACT_APP_AUTH_DOMAIN}
-    clientId={process.env.REACT_APP_CLIENT_ID}
+    domain='dev-itfjckjv62h81dxu.us.auth0.com'
+    clientId='BJWflfLTJZ7eO93Jwkt8g8L67SJBbxvF'
     redirectUri={window.location.origin}
     cacheLocation='localstorage'
   >
